@@ -5,20 +5,13 @@ import Sidebar from './components/Sidebar';
 import './App.css';
 
 class App extends Component {
-  state = {
-    locations: []
-  }
 
   render() {
 
     return (
       <div className="App">
 
-        <Navigation />
-
-        <Sidebar
-        locations={this.state.locations}
-        />
+        <Navigation/>
 
         <Map />
 

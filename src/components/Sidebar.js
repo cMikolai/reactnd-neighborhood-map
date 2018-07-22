@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp';
-import logo from '../logo.svg';
 import '../App.css';
+import Locations from '../Locations.json';
 
 class Sidebar extends Component {
   static propTypes = {
@@ -34,9 +34,8 @@ class Sidebar extends Component {
     }
 
     return (
-      <div className="Sidebar">
+      <div className="App-sidebar">
 
-        <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">My Neighborhood</h1>
         <br />
         <div className="filter">
@@ -49,13 +48,9 @@ class Sidebar extends Component {
         />
         </div>
 
-        <ol className='location-list'>
-          {filterLocations.map((location) => (
-            <li key={location.name} className='locations-list-item'>
-            </li>
-          ))}
-        </ol>
-
+          <li className="Sidebar-locations"> ELEMENT </li>
+          <li className="Sidebar-locations"> ELEMENT </li>
+          <li className="Sidebar-locations"> ELEMENT </li>
       </div>
     )
   }
