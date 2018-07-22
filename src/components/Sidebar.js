@@ -39,6 +39,7 @@ class Sidebar extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">My Neighborhood</h1>
         <br />
+        <div className="filter">
         <input
           className='filter-locations'
           type='text'
@@ -46,6 +47,7 @@ class Sidebar extends Component {
           value={query}
           onChange={(event) => this.updateQuery(event.target.value)}
         />
+        </div>
 
         <ol className='location-list'>
           {filterLocations.map((location) => (
