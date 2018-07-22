@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 import Map from './components/Map';
 import Navigation from './components/Navigation';
-import logo from './logo.svg';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 class App extends Component {
+  state = {
+    locations: []
+  }
+
   render() {
+
     return (
       <div className="App">
 
-        <header className="App-header">
-          <Navigation />
-        </header>
+        <Navigation />
 
-        <div className="Sidebar">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">My Neighborhood</h1>
-          <input
-          className='' />
-        </div>
+        <Sidebar
+        locations={this.state.locations}
+        />
 
-        <div className="Map-container">
-          <Map />
-        </div>
+        <Map />
+
       </div>
     );
   }

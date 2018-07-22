@@ -7,6 +7,12 @@
   height: 80px;
 }
 
+.App-title {
+  font-size: 1.5em;
+  text-align: center;
+  max-width: 100%;
+}
+
 .App-header {
   background-color: #222;
   padding: 20px;
@@ -30,8 +36,13 @@
   float: left;
 }
 
-.App-title {
-  font-size: 1.5em;
+.filter-locations {
+  width: 80%;
+  padding: 5px 5px 5px 10px;
+  font-size: 1.2em;
+  border: 0;
+  outline: none;
+  float: left;
 }
 
 .Map-container {
