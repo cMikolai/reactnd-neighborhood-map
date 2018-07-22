@@ -48,9 +48,12 @@ class Sidebar extends Component {
         />
         </div>
 
-          <li className="Sidebar-locations"> ELEMENT </li>
-          <li className="Sidebar-locations"> ELEMENT </li>
-          <li className="Sidebar-locations"> ELEMENT </li>
+        {Locations.map((location) => {
+          return (
+            <li className="Sidebar-locations"> {location.name} </li>
+          )
+        })
+        }
       </div>
     )
   }
