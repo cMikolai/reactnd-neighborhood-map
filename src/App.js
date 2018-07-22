@@ -7,9 +7,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="Sidebar">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">My Neighborhood</h1>
+          <input
+          className='' />
         </header>
 
         <div className="Map-container">
