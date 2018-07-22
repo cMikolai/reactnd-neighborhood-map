@@ -7,6 +7,17 @@
   height: 80px;
 }
 
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  height: 20px;
+  margin-left: 30vw;
+}
+
 .Sidebar {
   background-color: #222;
   padding: 20px;
