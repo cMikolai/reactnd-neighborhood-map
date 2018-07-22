@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Sportplatz",
+    "coordinates": {
+      "lat": "52.241922",
+      "lng": "14.549828"
+    }
+  },
+  {
+    "name": "Grundschule",
+    "coordinates": {
+      "lat": "52.239467",
+      "lng": "14.536154"
+    }
+  },
+  {
+    "name": "Kanaldenkmal",
+    "coordinates": {
+      "lat": "52.240857",
+      "lng": "14.554879"
+    }
+  },
+  {
+    "name": "Backshop",
+    "coordinates": {
+      "lat": "52.235715",
+      "lng": "14.532647"
+    }
+  },
+  {
+    "name": "Friedhof",
+    "coordinates": {
+      "lat": "52.235418",
+      "lng": "14.537327"
+    }
+  }
+]
