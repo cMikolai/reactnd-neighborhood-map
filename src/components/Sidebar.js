@@ -28,9 +28,9 @@ class Sidebar extends Component {
     let filterLocations
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
-      filterLocations = locations.filter((location) => match.test(location.name))
+      filterLocations = Locations.filter((location) => match.test(location.name))
     } else {
-      filterLocations = locations
+      filterLocations = Locations
     }
 
     return (
@@ -48,9 +48,12 @@ class Sidebar extends Component {
         />
         </div>
 
-        {Locations.map((location) => {
+        {filterLocations.map((location) => {
           return (
-            <li className="Sidebar-locations"> {location.name} </li>
+            <li
+              className="Sidebar-locations"
+              onClick=''>
+              {location.name} </li>
           )
         })
         }
