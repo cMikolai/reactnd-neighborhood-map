@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import PropTypes from 'prop-types'
 import '../App.css';
+//Style made by https://snazzymaps.com/style/38/shades-of-grey
 import MapStyle from '../MapStyle.json';
+import Locations from '../Locations.json';
 
 export class MapContainer extends Component {
+  static propTypes = {
+    locations: PropTypes.array.isRequired,
+  }
+
   state = {
     showingInfoWindow: false,
     activeMarker: {},
@@ -27,34 +34,45 @@ export class MapContainer extends Component {
   };
 
   render() {
+
     return (
       <div className="Map-container">
         <Map google={this.props.google}
             onClick={this.onMapClicked}
-            style={{width: '70%', height: '100vh', position: 'relative', float: 'right', }}
+            style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
               lat: 52.237496,
               lng: 14.53649}}
-            zoom={16}
+            zoom={15}
             disableDefaultUI= {true}>
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'}
-                  icon= {''}
-                />
+
+          {Locations.map((location) => {
+            return (
+              <Marker
+                onClick={this.onMarkerClick}
+                name={location.name}
+                animation={this.props.google.maps.Animation.DROP}
+                position={location.coordinates} />
+            )
+          })
+          }
 
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
-                <p>Peace</p>
               </div>
           </InfoWindow>
         </Map>
       </div>
     )
   }
+}
+
+Map.PropTypes = {
+  locations: PropTypes.array.isRequired
 }
 
 export default GoogleApiWrapper({
