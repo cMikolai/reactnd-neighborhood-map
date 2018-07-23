@@ -11,7 +11,7 @@ class Navigation extends Component {
     return (
       <div>
         <header className="App-header">
-          <nav className="App-navigation" role="navigation">
+          <nav className="App-navigation navigation">
             <div id="menuToggle">
             <input type="checkbox" className="nav-input"/>
               <span></span>

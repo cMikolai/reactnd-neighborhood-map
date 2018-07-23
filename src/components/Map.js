@@ -8,7 +8,7 @@ import Locations from '../Locations.json';
 
 export class MapContainer extends Component {
   static propTypes = {
-    locations: PropTypes.array.isRequired,
+    
   }
 
   state = {
@@ -50,6 +50,7 @@ export class MapContainer extends Component {
           {Locations.map((location) => {
             return (
               <Marker
+                key={location.name}
                 onClick={this.onMarkerClick}
                 name={location.name}
                 animation={this.props.google.maps.Animation.DROP}

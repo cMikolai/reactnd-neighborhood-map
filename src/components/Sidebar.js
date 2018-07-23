@@ -22,7 +22,6 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { locations } = this.props
     const { query } = this.state
 
     let filterLocations
@@ -34,11 +33,11 @@ class Sidebar extends Component {
     }
 
     return (
-      <div className="App-sidebar">
+      <div className='App-sidebar'>
 
-        <h1 className="App-title">My Neighborhood</h1>
+        <h1 className='App-title'>My Neighborhood</h1>
         <br />
-        <div className="filter">
+        <div className='filter'>
         <input
           className='filter-locations'
           type='text'
@@ -51,12 +50,13 @@ class Sidebar extends Component {
         {filterLocations.map((location) => {
           return (
             <li
-              className="Sidebar-locations"
-              onClick=''>
+              key={location.name}
+              className='Sidebar-locations'>
               {location.name} </li>
           )
         })
         }
+
       </div>
     )
   }

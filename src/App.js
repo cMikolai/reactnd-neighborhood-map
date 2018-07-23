@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import Map from './components/Map';
+import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
-import Sidebar from './components/Sidebar';
 import './App.css';
 
 class App extends Component {
+  state = {
+    locations: [],
+    markers: []
+  }
 
   render() {
 
     return (
       <div className="App">
 
-        <Navigation/>
+        <Navigation />
 
-        <Map />
+        <MapContainer />
 
       </div>
     );
