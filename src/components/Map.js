@@ -4,11 +4,10 @@ import PropTypes from 'prop-types'
 import '../App.css';
 //Style made by https://snazzymaps.com/style/38/shades-of-grey
 import MapStyle from '../MapStyle.json';
-import Locations from '../Locations.json';
 
 export class MapContainer extends Component {
   static propTypes = {
-    
+    filterLocations: PropTypes.array.isRequired
   }
 
   state = {
@@ -35,6 +34,8 @@ export class MapContainer extends Component {
 
   render() {
 
+    const { filterLocations } = this.props
+
     return (
       <div className="Map-container">
         <Map google={this.props.google}
@@ -47,7 +48,7 @@ export class MapContainer extends Component {
             zoom={15}
             disableDefaultUI= {true}>
 
-          {Locations.map((location) => {
+          {filterLocations.map((location) => {
             return (
               <Marker
                 key={location.name}

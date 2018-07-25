@@ -1,36 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp';
 import '../App.css';
-import Locations from '../Locations.json';
 
 class Sidebar extends Component {
   static propTypes = {
-    locations: PropTypes.array.isRequired,
-  }
-
-  state = {
-    query: ''
-  }
-
-  updateQuery = (query) => {
-    this.setState({ query: query.trim() })
-  }
-
-  clearQuery = () => {
-    this.setState({ query: '' })
+    filterLocations: PropTypes.array.isRequired,
   }
 
   render() {
-    const { query } = this.state
-
-    let filterLocations
-    if (query) {
-      const match = new RegExp(escapeRegExp(query), 'i')
-      filterLocations = Locations.filter((location) => match.test(location.name))
-    } else {
-      filterLocations = Locations
-    }
+    const { filterLocations } = this.props
 
     return (
       <div className='App-sidebar'>
@@ -42,8 +20,8 @@ class Sidebar extends Component {
           className='filter-locations'
           type='text'
           placeholder='Filter locations'
-          value={query}
-          onChange={(event) => this.updateQuery(event.target.value)}
+          value={this.props.query}
+          onChange={e => this.updateQuery(e.target.value)}
         />
         </div>
 

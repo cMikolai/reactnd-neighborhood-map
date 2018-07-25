@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Sidebar from './Sidebar';
 import '../App.css';
 
 class Navigation extends Component {
-  state = {
-    locations: []
+  static propTypes = {
+    filterLocations: PropTypes.array.isRequired
   }
 
   render() {
+    const { filterLocations } = this.props
+
     return (
       <div>
         <header className="App-header">
@@ -20,7 +23,8 @@ class Navigation extends Component {
 
               <ul id="menu">
                 <Sidebar
-                locations={this.state.locations} />
+                filterLocations={filterLocations}
+              onChange={this.updateQuery} />
               </ul>
             </div>
           </nav>
