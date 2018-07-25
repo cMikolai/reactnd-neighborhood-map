@@ -4,12 +4,11 @@ import '../App.css';
 
 class Sidebar extends Component {
   static propTypes = {
-    filterLocations: PropTypes.array.isRequired,
-    updateQuery: PropTypes.func.isRequired
+    filterLocations: PropTypes.array.isRequired
   }
 
   render() {
-    const { filterLocations, updateQuery } = this.props
+    const { filterLocations } = this.props
 
     return (
       <div className='App-sidebar'>
