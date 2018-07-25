@@ -5,10 +5,11 @@ import '../App.css';
 class Sidebar extends Component {
   static propTypes = {
     filterLocations: PropTypes.array.isRequired,
+    updateQuery: PropTypes.func.isRequired
   }
 
   render() {
-    const { filterLocations } = this.props
+    const { filterLocations, updateQuery } = this.props
 
     return (
       <div className='App-sidebar'>
@@ -21,7 +22,7 @@ class Sidebar extends Component {
           type='text'
           placeholder='Filter locations'
           value={this.props.query}
-          onChange={e => this.updateQuery(e.target.value)}
+          onChange={e => this.props.onChange(e.target.value)}
         />
         </div>
 

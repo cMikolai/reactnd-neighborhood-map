@@ -53,7 +53,7 @@ class App extends Component {
         filterLocations={filterLocations}
         query={this.state.query}
         updateQuery={this.updateQuery}
-        onChange={this.updateQuery}
+        //onChange={this.updateQuery}
         />
 
         <MapContainer
