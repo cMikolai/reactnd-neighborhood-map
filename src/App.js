@@ -12,20 +12,6 @@ class App extends Component {
     query: ''
   }
 
-  constructor(props) {
-    super(props);
-
-    this.state = { locations: '' };
-
-    this.filterLocations = this.filterLocations.bind(this);
-  }
-
-  filterLocations(newLocations) {
-    this.setState({
-      locations: newLocations
-    });
-  }
-
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
   }
@@ -43,7 +29,7 @@ class App extends Component {
       filterLocations = Locations.filter((location) => match.test(location.name))
     } else {
       filterLocations = Locations
-      console.log('filtering failed')
+      console.log('all Locations visible on map')
     }
 
     return (
@@ -53,7 +39,6 @@ class App extends Component {
         filterLocations={filterLocations}
         query={this.state.query}
         updateQuery={this.updateQuery}
-        //onChange={this.updateQuery}
         />
 
         <MapContainer
