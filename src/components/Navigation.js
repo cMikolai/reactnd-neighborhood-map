@@ -24,7 +24,8 @@ class Navigation extends Component {
               <ul id="menu">
                 <Sidebar
                 filterLocations={filterLocations}
-                onChange={this.props.updateQuery} />
+                onChange={this.props.updateQuery}
+                onClick={this.props.onSidebarLinkClick}/>
               </ul>
             </div>
           </nav>

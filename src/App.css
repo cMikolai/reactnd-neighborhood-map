@@ -227,6 +227,14 @@ li.Sidebar-locations {
   border-bottom: 1px solid #fff;
 }
 
+.Sidebar-locations a {
+  color: #fff;
+}
+
+.Sidebar-locations a:hover {
+  color: #eb4336;
+}
+
 .Map-container {
   width: 100%;
 }

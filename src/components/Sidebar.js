@@ -25,12 +25,17 @@ class Sidebar extends Component {
         />
         </div>
 
-        {filterLocations.map((location) => {
+        {filterLocations.map((location, index) => {
           return (
             <li
               key={location.name}
-              className='Sidebar-locations'>
-              {location.name} </li>
+              className='Sidebar-locations'
+              onClick={e => this.props.onClick(e.target.value)}
+              >
+              <a href="#"
+                >{location.name}
+              </a>
+            </li>
           )
         })
         }
@@ -39,6 +44,10 @@ class Sidebar extends Component {
     )
   }
 }
+
+//NOTE:
+//<a href="#" onClick={this.props.onClick()}>
+//onClick={e => this.props.onClick(e.target.value)}
 
 Sidebar.PropTypes = {
   locations: PropTypes.array.isRequired

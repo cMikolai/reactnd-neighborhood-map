@@ -20,8 +20,19 @@ class App extends Component {
     this.setState({ query: '' })
   }
 
+  onSidebarLinkClick = (e) => {
+    let markers = document.querySelectorAll('area')
+    let i
+
+    for (i = 0; i < markers.length; i++) {
+      markers[i].click();
+
+      //console.log(markers[i]);
+    }
+  }
+
   render() {
-    const {query} = this.state
+    const { query } = this.state
 
     let filterLocations
     if (query) {
@@ -29,7 +40,7 @@ class App extends Component {
       filterLocations = Locations.filter((location) => match.test(location.name))
     } else {
       filterLocations = Locations
-      console.log('all Locations visible on map')
+      //console.log('all Locations visible on map')
     }
 
     return (
@@ -37,8 +48,8 @@ class App extends Component {
 
         <Navigation
         filterLocations={filterLocations}
-        query={this.state.query}
         updateQuery={this.updateQuery}
+        onSidebarLinkClick={this.onSidebarLinkClick}
         />
 
         <MapContainer
