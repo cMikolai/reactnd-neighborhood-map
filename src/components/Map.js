@@ -60,19 +60,14 @@ export class MapContainer extends Component {
           })
           }
 
-          {filterLocations.map((location) => {
-            return (
-              <InfoWindow
-                key={location.name}
-                marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}>
-                  <div>
-                    <h1>{this.state.selectedPlace.name}</h1>
-                  </div>
-              </InfoWindow>
-            )
-          })
-          }
+
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+              <div>
+                <h1>{this.state.selectedPlace.name}</h1>
+              </div>
+          </InfoWindow>
 
 
         </Map>
