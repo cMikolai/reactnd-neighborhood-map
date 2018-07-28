@@ -29,12 +29,8 @@ class Sidebar extends Component {
           return (
             <li
               key={location.name}
-              className='Sidebar-locations'
-              onClick={e => this.props.onClick(e.target.value)}
-              >
-              <a href="#"
-                >{location.name}
-              </a>
+              className='Sidebar-locations'>
+              {location.name}
             </li>
           )
         })

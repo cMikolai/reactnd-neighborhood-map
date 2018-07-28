@@ -225,14 +225,13 @@ a:hover
 li.Sidebar-locations {
   margin: 5px 0;
   border-bottom: 1px solid #fff;
+  border-radius: 5px;
 }
 
-.Sidebar-locations a {
-  color: #fff;
-}
-
-.Sidebar-locations a:hover {
-  color: #eb4336;
+li:hover {
+  background-color: #333;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .Map-container {
