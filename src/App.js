@@ -6,11 +6,36 @@ import Locations from './Locations.json';
 import './App.css';
 
 class App extends Component {
-  state = {
-    locations: [],
-    markers: [],
-    query: ''
-  }
+  /*state = {
+    //locations: [],
+    //markers: [],
+    //query: ''
+  }*/
+
+  constructor(props) {
+    super(props);
+      this.state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+      };
+    }
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
@@ -33,8 +58,10 @@ class App extends Component {
 
     for (i = 0; i < marker.length; i++) {
       marker[i].firstChild.click();
+      //markers: marker[i].firstChild.click();
       //marker[i].push(this.state.markers)
       console.log(marker[i])
+      break;
     }
 
     /* if (sidebarLinks[i] === marker[i]) {
@@ -44,10 +71,9 @@ class App extends Component {
     } */
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     window.addEventListener('load', this.onSidebarLinkClick);
-    //this.onSidebarLinkClick();
-  }
+  }*/
 
   render() {
     const { query } = this.state
@@ -72,6 +98,12 @@ class App extends Component {
 
         <MapContainer
         filterLocations={filterLocations}
+        onSidebarLinkClick={this.onSidebarLinkClick}
+        onMarkerClick={this.onMarkerClick}
+        onMapClicked={this.onMapClicked}
+        selectedPlace={this.state.selectedPlace}
+        showingInfoWindow={this.state.showingInfoWindow}
+        activeMarker={this.state.activeMarker}
         />
 
       </div>

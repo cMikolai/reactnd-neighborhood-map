@@ -7,39 +7,23 @@ import MapStyle from '../MapStyle.json';
 
 export class MapContainer extends Component {
   static propTypes = {
-    filterLocations: PropTypes.array.isRequired
+    filterLocations: PropTypes.array.isRequired,
+    onSidebarLinkClick: PropTypes.func.isRequired,
+    onMarkerClick: PropTypes.func.isRequired,
+    onMapClicked: PropTypes.func.isRequired,
+    selectedPlace: PropTypes.object.isRequired,
+    activeMarker: PropTypes.object.isRequired,
+    showingInfoWindow: PropTypes.bool.isRequired
   }
-
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-  };
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onMapClicked = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
-    }
-  };
 
   render() {
 
-    const { filterLocations } = this.props
+    const { filterLocations, onSidebarLinkClick, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
 
     return (
       <div className="Map-container">
         <Map google={this.props.google}
-            onClick={this.onMapClicked}
+            onClick={onMapClicked}
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
@@ -53,7 +37,7 @@ export class MapContainer extends Component {
               <Marker
                 key={location.name}
                 id={location.id}
-                onClick={this.onMarkerClick}
+                onClick={onMarkerClick}
                 name={location.name}
                 animation={this.props.google.maps.Animation.DROP}
                 position={location.coordinates} />
@@ -63,10 +47,10 @@ export class MapContainer extends Component {
 
 
           <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
+            marker={activeMarker}
+            visible={showingInfoWindow}>
               <div>
-                <h1>{this.state.selectedPlace.name}</h1>
+                <h1>{selectedPlace.name}</h1>
               </div>
           </InfoWindow>
 
