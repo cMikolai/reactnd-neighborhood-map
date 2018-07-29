@@ -25,16 +25,22 @@ class Sidebar extends Component {
         />
         </div>
 
+        <div
+          className='Sidebar-locations'>
         {filterLocations.map((location, index) => {
           return (
             <li
+              className='Sidebar-location'
+              id={location.id}
+              onClick={e => this.props.onClick(e.target.id)}
               key={location.name}
-              className='Sidebar-locations'>
+              >
               {location.name}
             </li>
           )
         })
         }
+      </div>
 
       </div>
     )

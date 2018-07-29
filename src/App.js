@@ -20,15 +20,33 @@ class App extends Component {
     this.setState({ query: '' })
   }
 
-  onSidebarLinkClick = (e) => {
-    let markers = document.querySelectorAll('area')
-    let i
+  onSidebarLinkClick = (e, i, Location) => {
+    let marker = document.querySelectorAll('.gmnoprint map')
+    //marker = marker.firstChild
+    //let marker = document.querySelectorAll('area')
+    let sidebarLinks = document.querySelectorAll('li.Sidebar-location')
 
-    for (i = 0; i < markers.length; i++) {
-      markers[i].click();
+    /* for (i = 0; i < sidebarLinks.length; i++) {
+      marker[i].click();
+      console.log(sidebarLinks[i])
+    } */
 
-      //console.log(markers[i]);
+    for (i = 0; i < marker.length; i++) {
+      marker[i].firstChild.click();
+      //marker[i].push(this.state.markers)
+      console.log(marker[i])
     }
+
+    /* if (sidebarLinks[i] === marker[i]) {
+
+    } else {
+      console.log('No match!')
+    } */
+  }
+
+  componentDidMount() {
+    window.addEventListener('load', this.onSidebarLinkClick);
+    //this.onSidebarLinkClick();
   }
 
   render() {

@@ -48,10 +48,11 @@ export class MapContainer extends Component {
             zoom={15}
             disableDefaultUI= {true}>
 
-          {filterLocations.map((location) => {
+          {filterLocations.map((location, i) => {
             return (
               <Marker
                 key={location.name}
+                id={location.id}
                 onClick={this.onMarkerClick}
                 name={location.name}
                 animation={this.props.google.maps.Animation.DROP}
