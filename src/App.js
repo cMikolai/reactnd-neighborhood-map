@@ -3,15 +3,9 @@ import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
 import escapeRegExp from 'escape-string-regexp';
 import Locations from './Locations.json';
-//import FoursquareAPI from './FoursquareAPI';
 import './App.css';
 
 class App extends Component {
-  /*state = {
-    //locations: [],
-    //markers: [],
-    //query: ''
-  }*/
 
   constructor(props) {
     super(props);
@@ -50,10 +44,6 @@ class App extends Component {
     [...document.querySelectorAll('.gmnoprint map area')].find(m => m.title === e).click()
   }
 
-  /*componentDidMount() {
-    window.addEventListener('load', this.onSidebarLinkClick);
-  }*/
-
   render() {
     const { query } = this.state
 
@@ -63,7 +53,6 @@ class App extends Component {
       filterLocations = Locations.filter((location) => match.test(location.name))
     } else {
       filterLocations = Locations
-      //console.log('all Locations visible on map')
     }
 
     return (

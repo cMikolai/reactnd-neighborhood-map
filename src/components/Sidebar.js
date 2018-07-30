@@ -47,10 +47,6 @@ class Sidebar extends Component {
   }
 }
 
-//NOTE:
-//<a href="#" onClick={this.props.onClick()}>
-//onClick={e => this.props.onClick(e.target.value)}
-
 Sidebar.PropTypes = {
   locations: PropTypes.array.isRequired
 }
