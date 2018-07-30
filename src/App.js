@@ -3,6 +3,7 @@ import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
 import escapeRegExp from 'escape-string-regexp';
 import Locations from './Locations.json';
+import FoursquareAPI from './FoursquareAPI';
 import './App.css';
 
 class App extends Component {
@@ -47,22 +48,27 @@ class App extends Component {
 
   onSidebarLinkClick = (e, i, Location) => {
     let marker = document.querySelectorAll('.gmnoprint map')
+
+    for (i = 0; i < marker.length; i++) {
+      marker[i].firstChild.click();
+      console.log(marker[i])
+    }
+
     //marker = marker.firstChild
     //let marker = document.querySelectorAll('area')
-    let sidebarLinks = document.querySelectorAll('li.Sidebar-location')
+
+    //let sidebarLinks = document.querySelectorAll('li.Sidebar-location')
 
     /* for (i = 0; i < sidebarLinks.length; i++) {
       marker[i].click();
       console.log(sidebarLinks[i])
     } */
 
-    for (i = 0; i < marker.length; i++) {
-      marker[i].firstChild.click();
+      /*let markerFilter= Locations.filter((marker) => marker.id === Location.id);
+      console.log(markerFilter)*/
       //markers: marker[i].firstChild.click();
       //marker[i].push(this.state.markers)
-      console.log(marker[i])
-      break;
-    }
+      //break;
 
     /* if (sidebarLinks[i] === marker[i]) {
 

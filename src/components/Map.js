@@ -18,7 +18,7 @@ export class MapContainer extends Component {
 
   render() {
 
-    const { filterLocations, onSidebarLinkClick, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
 
     return (
       <div className="Map-container">
@@ -32,7 +32,7 @@ export class MapContainer extends Component {
             zoom={15}
             disableDefaultUI= {true}>
 
-          {filterLocations.map((location, i) => {
+          {filterLocations.map((location) => {
             return (
               <Marker
                 key={location.name}
@@ -45,7 +45,6 @@ export class MapContainer extends Component {
           })
           }
 
-
           <InfoWindow
             marker={activeMarker}
             visible={showingInfoWindow}>
@@ -53,7 +52,6 @@ export class MapContainer extends Component {
                 <h1>{selectedPlace.name}</h1>
               </div>
           </InfoWindow>
-
 
         </Map>
       </div>
