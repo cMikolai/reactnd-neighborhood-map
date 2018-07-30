@@ -27,22 +27,27 @@ export class MapContainer extends Component {
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
-              lat: 52.237496,
-              lng: 14.53649}}
-            zoom={15}
+              lat: 40.742513,
+              lng: -73.99188}}
+            zoom={16}
             disableDefaultUI= {true}>
 
-          {filterLocations.map((location) => {
+
+          {filterLocations.map((item) => {
             return (
               <Marker
-                title={location.name} // used for filtering markers
-                //foo={(()=>console.log(location.id))()}
-                key={location.name}
-                id={location.id}
+                title={item.name} // used for filtering markers
+                //foo={(()=>console.log(item.location.lat))()}
+                key={item.id}
+                id={item.id}
                 onClick={onMarkerClick}
-                name={location.name}
+                name={item.name}
                 animation={this.props.google.maps.Animation.DROP}
-                position={location.coordinates} />
+                position={{
+                  lat: item.location.lat,
+                  lng: item.location.lng
+                }}
+                address={item.location.address}/>
             )
           })
           }
@@ -52,6 +57,7 @@ export class MapContainer extends Component {
             visible={showingInfoWindow}>
               <div>
                 <h1>{selectedPlace.name}</h1>
+                <p>{selectedPlace.address}</p>
               </div>
           </InfoWindow>
 
