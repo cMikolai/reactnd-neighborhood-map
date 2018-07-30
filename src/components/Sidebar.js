@@ -32,7 +32,7 @@ class Sidebar extends Component {
             <li
               className='Sidebar-location'
               id={location.id}
-              onClick={e => this.props.onClick(e.target.id)}
+              onClick={e => this.props.onClick(location.name)}
               key={location.name}
               >
               {location.name}

@@ -35,6 +35,8 @@ export class MapContainer extends Component {
           {filterLocations.map((location) => {
             return (
               <Marker
+                title={location.name} // used for filtering markers
+                //foo={(()=>console.log(location.id))()}
                 key={location.name}
                 id={location.id}
                 onClick={onMarkerClick}
