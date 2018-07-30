@@ -196,6 +196,38 @@ a:hover
   transform: none;
 }
 
+/*
+ * Mobile CSS for navigation
+ */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+  #menu {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 0;
+  padding: 55px;
+  opacity: 1;
+  }
+}
+
+@media screen and (max-width: 812px) and (orientation: landscape) {
+  #menu {
+  width: 100vw;
+  height: 70vh;
+  padding: 0 50px;
+  opacity: 1;
+  }
+  h1.App-title {
+    margin-bottom: 0;
+  }
+  #menu .filter {
+    margin-bottom: 35px;
+  }
+  #menu li {
+    padding: 10px 0;
+  }
+}
+
 /* .App-sidebar {
   background-color: #222;
   color: white;
