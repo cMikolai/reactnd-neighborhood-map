@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
 import escapeRegExp from 'escape-string-regexp';
-//import Locations from './Locations.json';
 import './App.css';
 
 class App extends Component {
@@ -24,15 +23,18 @@ class App extends Component {
     });
 
     var params = {
-      "near": "New York, NY",
-      "query": 'food',
-      "radius": '500'
+      "near": "51.507351, -0.127758",
+      "query": '',
+      "radius": '100',
     };
 
-    foursquare.venues.getVenues(params)
-      .then(res=> {
+    foursquare.venues.getVenues(params).then(res=> {
         this.setState({ items: res.response.venues });
-      });
+    });
+
+    /* foursquare.venues.getVenues(params)
+      .then(res => res.response.venues)
+      .then(items => this.setState({items})); */
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -64,14 +66,14 @@ class App extends Component {
   }
 
   render() {
-    const { query } = this.state
+    const { query, items } = this.state
 
     let filterLocations
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
-      filterLocations = this.state.items.filter((item) => match.test(item.name))
+      filterLocations = items.filter((item) => match.test(item.name))
     } else {
-      filterLocations = this.state.items
+      filterLocations = items
     }
 
     return (
@@ -81,7 +83,8 @@ class App extends Component {
         filterLocations={filterLocations}
         updateQuery={this.updateQuery}
         onSidebarLinkClick={this.onSidebarLinkClick}
-        items={this.state.items}
+        //items={this.state.items}
+        //foo={(()=>console.log(this.state.items))()}
         />
 
         <MapContainer
@@ -92,7 +95,7 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
-        items={this.state.items}
+        //items={this.state.items}
         />
 
       </div>

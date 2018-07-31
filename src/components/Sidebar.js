@@ -13,7 +13,7 @@ class Sidebar extends Component {
     return (
       <div className='App-sidebar'>
 
-        <h1 className='App-title'>My Neighborhood</h1>
+        <h1 className='App-title'>Places in London</h1>
         <br />
         <div className='filter'>
         <input
