@@ -9,7 +9,7 @@ request({
     client_id: 'AU4JNRCBGSTSHHAKB0KU3WIA5ZNTPV2DYD1QUEE5DZMRCXTF',
     client_secret: 'VA0YLV21BIMVDZCSWATVUSX2D2Q2RSVUFYS5VCZQO0ZXEBXE',
     ll: '40.7243,-74.0018',
-    query: 'coffee',
+    query: '',
     v: '20180323',
     limit: 1
   }
@@ -17,6 +17,6 @@ request({
   if (err) {
     console.error(err);
   } else {
-    //console.log(body);
+    console.log(body);
   }
 });

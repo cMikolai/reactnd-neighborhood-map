@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import PropTypes from 'prop-types'
+import FoursquareAPI from '../FoursquareAPI'
 import '../App.css';
 //Style made by https://snazzymaps.com/style/38/shades-of-grey
 import MapStyle from '../MapStyle.json';
