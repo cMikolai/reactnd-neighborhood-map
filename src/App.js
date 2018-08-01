@@ -64,6 +64,7 @@ class App extends Component {
         filterLocations={filterLocations}
         updateQuery={this.updateQuery}
         onSidebarLinkClick={this.onSidebarLinkClick}
+        foo={(()=>console.log([...document.querySelectorAll('.gmnoprint map area')]))()}
         />
 
         <MapContainer
