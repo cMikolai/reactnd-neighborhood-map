@@ -77,6 +77,7 @@ class App extends Component {
         />
 
         <MapContainer
+        //foo={(()=>console.log(items))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
