@@ -57,14 +57,14 @@ class App extends Component {
   }
 
   render() {
-    const { query } = this.state
+    const { query, items } = this.state
 
     let filterLocations
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
-      filterLocations = this.state.items.filter((item) => match.test(item.name))
+      filterLocations = items.filter((item) => match.test(item.name))
     } else {
-      filterLocations = this.state.items
+      filterLocations = items
     }
 
     return (
