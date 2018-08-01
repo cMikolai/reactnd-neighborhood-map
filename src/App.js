@@ -13,8 +13,17 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        items: []
       };
-    }
+  }
+
+  componentDidMount() {
+    fetch('https://api.foursquare.com/v2/venues/search?near=London&query=food&v=20180323&limit=10&intent=browse&radius=500&client_id=AU4JNRCBGSTSHHAKB0KU3WIA5ZNTPV2DYD1QUEE5DZMRCXTF&client_secret=VA0YLV21BIMVDZCSWATVUSX2D2Q2RSVUFYS5VCZQO0ZXEBXE')
+    .then(res => res.json())
+    .then(items => {
+        this.setState({ items: items.response.venues });
+      });
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -67,7 +76,6 @@ class App extends Component {
         />
 
         <MapContainer
-        foo={(()=>console.log([...document.querySelectorAll('.gmnoprint map area')]))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}

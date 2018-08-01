@@ -43,7 +43,8 @@ export class MapContainer extends Component {
                 onClick={onMarkerClick}
                 name={location.name}
                 animation={this.props.google.maps.Animation.DROP}
-                position={location.coordinates} />
+                position={location.coordinates}
+                itemID={location.itemID}/>
             )
           })
           }
@@ -53,6 +54,7 @@ export class MapContainer extends Component {
             visible={showingInfoWindow}>
               <div>
                 <h1>{selectedPlace.name}</h1>
+                <p>{selectedPlace.itemID}</p>
               </div>
           </InfoWindow>
 
