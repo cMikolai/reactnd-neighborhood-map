@@ -12,7 +12,6 @@ export class MapContainer extends Component {
     onMarkerClick: PropTypes.func.isRequired,
     onMapClicked: PropTypes.func.isRequired,
     selectedPlace: PropTypes.object.isRequired,
-    activeMarker: PropTypes.object.isRequired,
     showingInfoWindow: PropTypes.bool.isRequired
   }
 
@@ -27,22 +26,26 @@ export class MapContainer extends Component {
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
-              lat: 52.237496,
-              lng: 14.53649}}
+              lat: 51.507351,
+              lng: -0.127758}}
             zoom={15}
             disableDefaultUI= {true}>
 
-          {filterLocations.map((location) => {
+          {filterLocations.map((item) => {
             return (
               <Marker
-                title={location.name} // used for filtering markers
-                //foo={(()=>console.log(location.id))()}
-                key={location.name}
-                id={location.id}
+                title={item.name} // used for filtering markers
+                //fooitemconsole.log(location.id))()}
+                key={item.name}
+                id={item.id}
                 onClick={onMarkerClick}
-                name={location.name}
+                name={item.name}
                 animation={this.props.google.maps.Animation.DROP}
-                position={location.coordinates} />
+                position={{
+                lat: item.location.lat,
+                lng: item.location.lng }}
+                address={item.location.address}
+               />
             )
           })
           }
@@ -50,8 +53,12 @@ export class MapContainer extends Component {
           <InfoWindow
             marker={activeMarker}
             visible={showingInfoWindow}>
-              <div>
+              <div
+                style={{color: '#000'}}>
                 <h1>{selectedPlace.name}</h1>
+                <p>{selectedPlace.address}</p>
+                <br />
+                <p>Informations by Foursquare.com</p>
               </div>
           </InfoWindow>
 
