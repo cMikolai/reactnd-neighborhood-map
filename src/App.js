@@ -3,6 +3,7 @@ import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
 import escapeRegExp from 'escape-string-regexp';
 import Locations from './Locations.json';
+import FoursquareAPI from './FoursquareAPI'
 import './App.css';
 
 class App extends Component {
