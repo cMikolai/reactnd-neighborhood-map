@@ -12,7 +12,7 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        animation: '0',
+        animation: false,
         items: []
       };
   }
@@ -42,7 +42,7 @@ class App extends Component {
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
-      animation: '1'
+      animation: true
     });
 
   onMapClicked = (props) => {
@@ -50,7 +50,7 @@ class App extends Component {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null,
-        animation: '0'
+        animation: false
       })
     }
   };
@@ -65,12 +65,13 @@ class App extends Component {
 
   onSidebarLinkClick = (e) => {
     [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
-      console.log('I am a fancy marker')
+      console.log('I am a fancy marker')//,
+      //this.setState({ animation: true })
     )
   }
 
   render() {
-    const { query, items } = this.state
+    const { query, items, animation } = this.state
 
     let filterLocations
     if (query) {
@@ -90,7 +91,7 @@ class App extends Component {
         />
 
         <MapContainer
-        //foo={(()=>console.log(this.state.label))()}
+        foo={(()=>console.log(this.state.animation))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
@@ -98,7 +99,7 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
-        animation={this.state.animation}
+        animation={animation}
         />
 
       </div>
