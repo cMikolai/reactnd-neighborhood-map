@@ -26,9 +26,9 @@ export class MapContainer extends Component {
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
-              lat: 51.507351,
-              lng: -0.127758}}
-            zoom={15}
+              lat: 51.509,
+              lng: -0.127}}
+            zoom={16}
             disableDefaultUI= {true}>
 
           {filterLocations.map((item) => {
@@ -40,7 +40,7 @@ export class MapContainer extends Component {
                 id={item.id}
                 onClick={onMarkerClick}
                 name={item.name}
-                animation={this.props.google.maps.Animation.DROP}
+                //animation={this.props.google.maps.Animation.DROP}
                 position={{
                 lat: item.location.lat,
                 lng: item.location.lng }}

@@ -18,7 +18,11 @@ class App extends Component {
       };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    this.getLocations()
+  }
+
+  getLocations = () => {
     fetch('https://api.foursquare.com/v2/venues/search?near=London&query=food&v=20180323&limit=10&intent=browse&radius=500&client_id=AU4JNRCBGSTSHHAKB0KU3WIA5ZNTPV2DYD1QUEE5DZMRCXTF&client_secret=VA0YLV21BIMVDZCSWATVUSX2D2Q2RSVUFYS5VCZQO0ZXEBXE')
     .then(res => res.json())
     .then(items => {
