@@ -40,6 +40,10 @@ export class MapContainer extends Component {
                 id={item.id}
                 onClick={onMarkerClick}
                 name={item.name}
+                icon={{
+                  path: this.props.google.maps.SymbolPath.CIRCLE,
+                  scale: 8
+                }}
                 //animation={animation}
                 position={{
                 lat: item.location.lat,

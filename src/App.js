@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   onSidebarLinkClick = (e) => {
-    [...document.querySelectorAll('.gmnoprint map area')].find(m => m.title === e).click(
+    [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
       console.log('I am a fancy marker')
     )
   }
