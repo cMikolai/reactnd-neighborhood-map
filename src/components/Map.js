@@ -17,7 +17,7 @@ export class MapContainer extends Component {
 
   render() {
 
-    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, animation } = this.props
 
     return (
       <div className="Map-container">
@@ -40,7 +40,7 @@ export class MapContainer extends Component {
                 id={item.id}
                 onClick={onMarkerClick}
                 name={item.name}
-                //animation={this.props.google.maps.Animation.DROP}
+                animation={animation}
                 position={{
                 lat: item.location.lat,
                 lng: item.location.lng }}

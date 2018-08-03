@@ -12,6 +12,7 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        animation: '0',
         items: []
       };
   }
@@ -40,14 +41,16 @@ class App extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      animation: '1'
     });
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
+        animation: '0'
       })
     }
   };
@@ -87,7 +90,7 @@ class App extends Component {
         />
 
         <MapContainer
-        //foo={(()=>console.log(items))()}
+        //foo={(()=>console.log(this.state.label))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
@@ -95,6 +98,7 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
+        animation={this.state.animation}
         />
 
       </div>
