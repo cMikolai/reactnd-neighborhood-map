@@ -33,9 +33,10 @@ export class MapContainer extends Component {
             disableDefaultUI= {true}>
 
           {filterLocations.map((item) => {
+            // filters locations and creates a marker for them
             return (
               <Marker
-                title={item.name} // used for filtering markers
+                title={item.name} // needed for filtering markers
                 //foo={(()=>console.log(location.id))()}
                 key={item.id}
                 id={item.id}

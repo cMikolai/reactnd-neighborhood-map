@@ -17,7 +17,6 @@
   position: fixed;
   z-index: 99;
   height: 20px;
-  /* margin-left: 30vw; */
 }
 
 .App-navigation {
@@ -25,9 +24,14 @@
   text-align: left;
 }
 
+/* Foursquare Src Style */
 .App-src {
   font-size: 10px;
   padding-top: 10px;
+}
+
+.Map-container {
+  width: 100%;
 }
 
 /* NAVIGATION BY (I edited it, though):
@@ -43,15 +47,6 @@ https://codepen.io/erikterwan/pen/EVzeRP */
  * production code, beware of the browser
  * prefixes.
  */
-
-body
-{
-  margin: 0;
-  padding: 0;
-
-  background: #232323;
-  color: #cdcdcd;
-}
 
 a
 {
@@ -244,17 +239,6 @@ a:hover
   }
 }
 
-/* .App-sidebar {
-  background-color: #222;
-  color: white;
-  width: 30%;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  overflow: hidden;
-  float: left;
-} */
-
 /* Sidebar */
 
 .filter {
@@ -284,10 +268,7 @@ li:hover {
   border-radius: 5px;
 }
 
-.Map-container {
-  width: 100%;
-}
-
+/* Makes loading/offline message visible to user*/
 .App-offline {
   padding-top: 200px;
 }

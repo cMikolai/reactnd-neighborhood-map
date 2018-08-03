@@ -28,6 +28,7 @@ class Sidebar extends Component {
         <div
           className='Sidebar-locations'>
         {filterLocations.map((item) => {
+          // uses same function as Map.js to match results
           return (
             <li
               className='Sidebar-location'

@@ -23,6 +23,7 @@ class Navigation extends Component {
 
               <ul id="menu">
                 <Sidebar
+                  // Navigation is mainly used as a container, passing functions down to Sidebar
                 filterLocations={filterLocations}
                 onChange={this.props.updateQuery}
                 onClick={this.props.onSidebarLinkClick}

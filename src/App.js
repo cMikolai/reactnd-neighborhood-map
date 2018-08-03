@@ -22,6 +22,7 @@ class App extends Component {
     this.ifAppIsOffline()
   }
 
+// Fetching Foursquare API
   getLocations = () => {
     fetch('https://api.foursquare.com/v2/venues/search?near=London&query=food&v=20180323&limit=10&intent=browse&radius=500&client_id=AU4JNRCBGSTSHHAKB0KU3WIA5ZNTPV2DYD1QUEE5DZMRCXTF&client_secret=VA0YLV21BIMVDZCSWATVUSX2D2Q2RSVUFYS5VCZQO0ZXEBXE')
     .then(res => res.json())
@@ -30,13 +31,15 @@ class App extends Component {
       });
   }
 
+// Changing the default "Loading..." - message to display a connection error
   ifAppIsOffline = () => {
     var appIsOffline = document.querySelector('.App').lastElementChild
-    appIsOffline.className += "App-offline"
+    appIsOffline.className += 'App-offline'
     appIsOffline.innerHTML = 'No internet connection. Please try again later.'
     //console.log(appIsOffline)
   }
 
+// Handles marker click-states
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -45,6 +48,7 @@ class App extends Component {
       animation: true
     });
 
+// Handles Map click-states
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -55,6 +59,7 @@ class App extends Component {
     }
   };
 
+// query-functions are required for search
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
   }
@@ -63,6 +68,7 @@ class App extends Component {
     this.setState({ query: '' })
   }
 
+// Having clicks on sidebar-links showing their markers info-windows
   onSidebarLinkClick = (e) => {
     [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
       console.log('I am a fancy marker')//,
@@ -73,9 +79,11 @@ class App extends Component {
   render() {
     const { query, items, animation } = this.state
 
+    // Search (passed down to both Map and Sidebar)
     let filterLocations
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
+      // filtering the items array
       filterLocations = items.filter((item) => match.test(item.name))
     } else {
       filterLocations = items
@@ -91,7 +99,7 @@ class App extends Component {
         />
 
         <MapContainer
-        foo={(()=>console.log(this.state.animation))()}
+        // foo={(()=>console.log(this.state.animation))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
