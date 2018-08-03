@@ -12,7 +12,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To use this repository on your local machine:
 * clone or download the repository
-* and start the local server with `npm start`.
+* and start the local server with `npm start`
+* on `localhost:3000`.
 
 
 To get the site to use service workers please use
