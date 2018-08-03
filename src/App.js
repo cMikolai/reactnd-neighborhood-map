@@ -18,6 +18,7 @@ class App extends Component {
 
   componentDidMount = () => {
     this.getLocations()
+    this.ifAppIsOffline()
   }
 
   getLocations = () => {
@@ -26,6 +27,13 @@ class App extends Component {
     .then(items => {
         this.setState({ items: items.response.venues });
       });
+  }
+
+  ifAppIsOffline = () => {
+    var appIsOffline = document.querySelector('.App').lastElementChild
+    appIsOffline.className += "App-offline"
+    appIsOffline.innerHTML = 'No internet connection. Please try again later.'
+    //console.log(appIsOffline)
   }
 
   onMarkerClick = (props, marker, e) =>
