@@ -23,6 +23,7 @@ export class MapContainer extends Component {
     return (
       <div className="Map-container">
         <Map google={this.props.google}
+            className={'Map'}
             onClick={onMapClicked}
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
@@ -30,7 +31,7 @@ export class MapContainer extends Component {
               lat: 51.509,
               lng: -0.127}}
             zoom={16}
-            disableDefaultUI= {true}>
+            disableDefaultUI={true}>
 
           {filterLocations.map((item) => {
             // filters locations and creates a marker for them
@@ -61,9 +62,14 @@ export class MapContainer extends Component {
             visible={showingInfoWindow}>
               <div
                 style={{color: '#000'}}>
-                <h1>{selectedPlace.name}</h1>
-                <p>{selectedPlace.address}</p>
-                <p className="App-src">Informations by <a href="https://foursquare.com">Foursquare.com</a></p>
+                <h1
+                  tabIndex={'4'}>{selectedPlace.name}</h1>
+                <p
+                  tabIndex={'5'}>{selectedPlace.address}</p>
+                <p className="App-src"
+                  tabIndex={'6'}>Informations by
+                  <a href="https://foursquare.com"
+                  tabIndex="-1"> Foursquare.com</a></p>
               </div>
           </InfoWindow>
 

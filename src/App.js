@@ -20,6 +20,12 @@ class App extends Component {
   componentDidMount = () => {
     this.getLocations()
     this.ifAppIsOffline()
+    this.toggleNavigation()
+    this.handleTabIndex()
+  }
+
+  componentDidUpdate= () => {
+    this.handleTabIndex()
   }
 
 // Fetching Foursquare API
@@ -37,6 +43,35 @@ class App extends Component {
     appIsOffline.className += 'App-offline'
     appIsOffline.innerHTML = 'No internet connection. Please try again later.'
     //console.log(appIsOffline)
+  }
+
+// toggles Navigation
+  toggleNavigation = (e) => {
+    var navClass = document.querySelector('.nav-input')
+    var sidebarList = document.querySelector('#menu')
+
+    navClass.click(function() {
+      sidebarList.toggle()
+    })
+  }
+
+// adds enter event to tabbing
+  onKeyPressed = (e) => {
+    if (e.keyCode === 13) {
+      document.activeElement.click()
+    }
+  }
+
+// Handles tab index for Foursquare links
+  handleTabIndex = (i) => {
+    var mapLinks = document.querySelectorAll('a')
+    //console.log(mapLinks)
+
+    for (i; i < mapLinks.length; i++) {
+      mapLinks[i].tabIndex = "-1";
+    }
+
+    [...document.querySelectorAll('.gmnoprint')].tabIndex=[1]
   }
 
 // Handles marker click-states
@@ -96,6 +131,7 @@ class App extends Component {
         filterLocations={filterLocations}
         updateQuery={this.updateQuery}
         onSidebarLinkClick={this.onSidebarLinkClick}
+        onKeyPressed={this.onKeyPressed}
         />
 
         <MapContainer

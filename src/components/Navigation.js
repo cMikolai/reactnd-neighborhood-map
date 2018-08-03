@@ -5,18 +5,19 @@ import '../App.css';
 
 class Navigation extends Component {
   static propTypes = {
-    filterLocations: PropTypes.array.isRequired
+    filterLocations: PropTypes.array.isRequired,
+    onKeyPressed: PropTypes.func.isRequired
   }
 
   render() {
-    const { filterLocations } = this.props
+    const { filterLocations, onKeyPressed } = this.props
 
     return (
       <div>
         <header className="App-header">
           <nav className="App-navigation navigation">
-            <div id="menuToggle">
-            <input type="checkbox" className="nav-input"/>
+            <div id="menuToggle" tabIndex="0" onKeyDown={(e) => onKeyPressed(e)}>
+              <input type="checkbox" className="nav-input"/>
               <span></span>
               <span></span>
               <span></span>

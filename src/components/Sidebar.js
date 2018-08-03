@@ -17,6 +17,7 @@ class Sidebar extends Component {
         <br />
         <div className='filter'>
         <input
+          tabIndex='2'
           className='filter-locations'
           type='text'
           placeholder='Filter locations'
@@ -31,6 +32,7 @@ class Sidebar extends Component {
           // uses same function as Map.js to match results
           return (
             <li
+              tabIndex={'3'}
               className='Sidebar-location'
               id={item.id}
               onClick={e => this.props.onClick(item.name)}
