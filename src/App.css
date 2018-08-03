@@ -256,6 +256,10 @@ a:hover
   border-radius: 5px;
 }
 
+input:focus {
+  box-shadow: 0px 0px 3px 3px #e91e63;
+}
+
 li.Sidebar-location {
   margin: 5px 0;
   border-bottom: 1px solid #fff;
