@@ -106,8 +106,8 @@ class App extends Component {
 // Having clicks on sidebar-links showing their markers info-windows
   onSidebarLinkClick = (e) => {
     [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
-      console.log('I am a fancy marker')//,
-      //this.setState({ animation: true })
+      console.log('I am a fancy marker'),
+      this.setState({ animation: true })
     )
   }
 
