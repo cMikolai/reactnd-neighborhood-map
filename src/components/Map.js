@@ -57,8 +57,7 @@ export class MapContainer extends Component {
                 style={{color: '#000'}}>
                 <h1>{selectedPlace.name}</h1>
                 <p>{selectedPlace.address}</p>
-                <br />
-                <p>Informations by Foursquare.com</p>
+                <p className="App-src">Informations by <a href="https://foursquare.com">Foursquare.com</a></p>
               </div>
           </InfoWindow>
 
