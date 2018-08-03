@@ -17,6 +17,7 @@ class Sidebar extends Component {
         <br />
         <div className='filter'>
         <input
+          role='searchbox'
           tabIndex='2'
           className='filter-locations'
           type='text'
