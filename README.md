@@ -26,11 +26,11 @@ To get the site to use service workers please use
 
 The app is built with the following code dependencies:
 
-1. [React] (https://github.com/facebook/React)
-2. [Escape RegExp special characters] (https://github.com/sindresorhus/escape-string-regexp)
+1. [React](https://github.com/facebook/React)
+2. [Escape RegExp special characters](https://github.com/sindresorhus/escape-string-regexp)
 3. [google-maps-react](https://github.com/fullstackreact/google-maps-react)
-4. [prop-types] (https://github.com/facebook/prop-types)
-5. [Foursquare API] (https://foursquare.com/)
+4. [prop-types](https://github.com/facebook/prop-types)
+5. [Foursquare API](https://foursquare.com/)
 
 ## Contributing
 
