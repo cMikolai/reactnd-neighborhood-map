@@ -40,7 +40,7 @@ export class MapContainer extends Component {
                 id={item.id}
                 onClick={onMarkerClick}
                 name={item.name}
-                animation={animation}
+                //animation={animation}
                 position={{
                 lat: item.location.lat,
                 lng: item.location.lng }}
