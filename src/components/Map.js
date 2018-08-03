@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import PropTypes from 'prop-types'
-import FoursquareAPI from '../FoursquareAPI'
 import '../App.css';
 //Style made by https://snazzymaps.com/style/38/shades-of-grey
 import MapStyle from '../MapStyle.json';
@@ -13,7 +12,6 @@ export class MapContainer extends Component {
     onMarkerClick: PropTypes.func.isRequired,
     onMapClicked: PropTypes.func.isRequired,
     selectedPlace: PropTypes.object.isRequired,
-    activeMarker: PropTypes.object.isRequired,
     showingInfoWindow: PropTypes.bool.isRequired
   }
 
@@ -28,22 +26,26 @@ export class MapContainer extends Component {
             style={{width: '100%', height: '100%', position: 'relative', float: 'right' }}
             styles={MapStyle}
             initialCenter={{
-              lat: 52.237496,
-              lng: 14.53649}}
-            zoom={15}
+              lat: 51.509,
+              lng: -0.127}}
+            zoom={16}
             disableDefaultUI= {true}>
 
-          {filterLocations.map((location) => {
+          {filterLocations.map((item) => {
             return (
               <Marker
-                title={location.name} // used for filtering markers
+                title={item.name} // used for filtering markers
                 //foo={(()=>console.log(location.id))()}
-                key={location.name}
-                id={location.id}
+                key={item.id}
+                id={item.id}
                 onClick={onMarkerClick}
-                name={location.name}
-                animation={this.props.google.maps.Animation.DROP}
-                position={location.coordinates} />
+                name={item.name}
+                //animation={this.props.google.maps.Animation.DROP}
+                position={{
+                lat: item.location.lat,
+                lng: item.location.lng }}
+                address={item.location.address}
+               />
             )
           })
           }
@@ -51,8 +53,12 @@ export class MapContainer extends Component {
           <InfoWindow
             marker={activeMarker}
             visible={showingInfoWindow}>
-              <div>
+              <div
+                style={{color: '#000'}}>
                 <h1>{selectedPlace.name}</h1>
+                <p>{selectedPlace.address}</p>
+                <br />
+                <p>Informations by Foursquare.com</p>
               </div>
           </InfoWindow>
 

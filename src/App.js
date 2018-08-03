@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MapContainer from './components/Map';
 import Navigation from './components/Navigation';
 import escapeRegExp from 'escape-string-regexp';
-import Locations from './Locations.json';
 import './App.css';
 
 class App extends Component {
@@ -13,8 +12,21 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        items: []
       };
-    }
+  }
+
+  componentDidMount = () => {
+    this.getLocations()
+  }
+
+  getLocations = () => {
+    fetch('https://api.foursquare.com/v2/venues/search?near=London&query=food&v=20180323&limit=10&intent=browse&radius=500&client_id=AU4JNRCBGSTSHHAKB0KU3WIA5ZNTPV2DYD1QUEE5DZMRCXTF&client_secret=VA0YLV21BIMVDZCSWATVUSX2D2Q2RSVUFYS5VCZQO0ZXEBXE')
+    .then(res => res.json())
+    .then(items => {
+        this.setState({ items: items.response.venues });
+      });
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -47,14 +59,14 @@ class App extends Component {
   }
 
   render() {
-    const { query } = this.state
+    const { query, items } = this.state
 
     let filterLocations
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
-      filterLocations = Locations.filter((location) => match.test(location.name))
+      filterLocations = items.filter((item) => match.test(item.name))
     } else {
-      filterLocations = Locations
+      filterLocations = items
     }
 
     return (
@@ -67,7 +79,7 @@ class App extends Component {
         />
 
         <MapContainer
-        foo={(()=>console.log([...document.querySelectorAll('.gmnoprint map area')]))()}
+        //foo={(()=>console.log(items))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
