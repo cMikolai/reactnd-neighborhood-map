@@ -14,7 +14,7 @@ class Navigation extends Component {
 
     return (
       <div>
-        <header className="App-header">
+        <div className="App-nav-container">
           <nav className="App-navigation navigation">
             <div id="menuToggle" tabIndex="0" onKeyDown={(e) => onKeyPressed(e)}>
               <input type="checkbox" className="nav-input"/>
@@ -32,7 +32,7 @@ class Navigation extends Component {
               </ul>
             </div>
           </nav>
-        </header>
+        </div>
       </div>
     )
   }
