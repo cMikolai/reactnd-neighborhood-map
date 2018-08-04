@@ -12,7 +12,6 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        animation: false,
         items: []
       };
   }
@@ -65,13 +64,13 @@ class App extends Component {
     var gmErrContainer = document.querySelector('.gm-err-container')
 
     if (map && gmErrContainer) {
-      console.log('failed')
+      //console.log('failed')
       sidebarList.style.display = 'none';
     } else if (map && !gmErrContainer) {
-      console.log('success')
+      //console.log('success')
       sidebarList.style.display = 'block';
     } else {
-      console.log('failed')
+      //console.log('failed')
       sidebarList.style.display = 'none';
     }
   }
@@ -110,8 +109,7 @@ class App extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true,
-      animation: true
+      showingInfoWindow: true
     });
 
 // Handles Map click-states
@@ -119,8 +117,7 @@ class App extends Component {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
-        animation: false
+        activeMarker: null
       })
     }
   };
@@ -138,8 +135,7 @@ class App extends Component {
   onSidebarLinkClick = (e) => {
     if (document.querySelector('.Map-container')) {
       [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
-        console.log('I am a fancy marker'),
-        this.setState({ animation: true })
+        console.log('I am a fancy marker')
       )
     } else {
       this.onGetLocationsError()
@@ -147,7 +143,7 @@ class App extends Component {
   }
 
   render() {
-    const { query, items, animation } = this.state
+    const { query, items } = this.state
 
     // Search (passed down to both Map and Sidebar)
     let filterLocations
@@ -178,7 +174,6 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
-        animation={animation}
         />
 
       </div>

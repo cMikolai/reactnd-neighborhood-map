@@ -12,13 +12,12 @@ export class MapContainer extends Component {
     onMarkerClick: PropTypes.func.isRequired,
     onMapClicked: PropTypes.func.isRequired,
     selectedPlace: PropTypes.object.isRequired,
-    showingInfoWindow: PropTypes.bool.isRequired,
-    animation: PropTypes.bool.isRequired
+    showingInfoWindow: PropTypes.bool.isRequired
   }
 
   render() {
 
-    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, animation} = this.props
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
 
     return (
       <div className="Map-container" role="application">
@@ -47,7 +46,7 @@ export class MapContainer extends Component {
                   path: this.props.google.maps.SymbolPath.CIRCLE,
                   scale: 8
                 }}
-                animation={animation && this.props.google.maps.Animation.BOUNCE}
+                animation={0}
                 position={{
                 lat: item.location.lat,
                 lng: item.location.lng }}
