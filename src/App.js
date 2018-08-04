@@ -19,13 +19,15 @@ class App extends Component {
 
   componentDidMount = () => {
     this.getLocations()
-    this.ifAppIsOffline()
+    this.ifAppIsLoading()
     this.toggleNavigation()
     this.handleTabIndex()
+    this.checkMapsLoadingStatus()
   }
 
   componentDidUpdate= () => {
     this.handleTabIndex()
+    this.checkMapsLoadingStatus()
   }
 
 // Fetching Foursquare API
@@ -50,11 +52,23 @@ class App extends Component {
   }
 
 // Changing the default "Loading..." - message to display a connection error
-  ifAppIsOffline = () => {
+  ifAppIsLoading = () => {
     var appIsOffline = document.querySelector('.App').lastElementChild
     appIsOffline.className += 'App-offline'
     appIsOffline.innerHTML = 'The map could not be loaded. Please try again later.'
-    //console.log(appIsOffline)
+  }
+
+// Checking if Map is visible
+  checkMapsLoadingStatus = () => {
+    var map = document.querySelector('.Map-container')
+    var sidebarList = document.querySelector('#menu')
+    if (map) {
+      console.log('success')
+      sidebarList.style.display = 'initial';
+    } else {
+      console.log('failed')
+      sidebarList.style.display = 'none';
+    }
   }
 
 // toggles Navigation
@@ -117,10 +131,14 @@ class App extends Component {
 
 // Having clicks on sidebar-links showing their markers info-windows
   onSidebarLinkClick = (e) => {
-    [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
-      console.log('I am a fancy marker'),
-      this.setState({ animation: true })
-    )
+    if (document.querySelector('.Map-container')) {
+      [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
+        console.log('I am a fancy marker'),
+        this.setState({ animation: true })
+      )
+    } else {
+      this.onGetLocationsError()
+    }
   }
 
   render() {

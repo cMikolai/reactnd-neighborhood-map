@@ -285,6 +285,7 @@ li:hover {
   background: #fff;
   padding: 10px;
   margin: 200px 0px;
-  width: 100vw;
+  width: 50vw;
+  right: 0;
   color: red;
 }
