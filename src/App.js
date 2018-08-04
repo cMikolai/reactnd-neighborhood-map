@@ -12,7 +12,8 @@ class App extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        items: []
+        items: [],
+        active: false
       };
   }
 
@@ -76,13 +77,15 @@ class App extends Component {
   }
 
 // toggles Navigation
-  toggleNavigation = (e) => {
-    var navClass = document.querySelector('.nav-input')
-    var sidebarList = document.querySelector('#menu')
+  toggleNavigation = () => {
+    const currentState = this.state.active;
 
-    navClass.click(function() {
-      sidebarList.toggle()
+    this.setState({
+      active: !currentState
     })
+
+    //console.log("I was clicked!")
+    //console.log(this.state.active)
   }
 
 // adds enter event to tabbing
@@ -95,13 +98,24 @@ class App extends Component {
 // Handles tab index for Foursquare links
   handleTabIndex = (i) => {
     var mapLinks = document.querySelectorAll('a')
-    //console.log(mapLinks)
 
     for (i; i < mapLinks.length; i++) {
       mapLinks[i].tabIndex = "-1";
     }
 
-    [...document.querySelectorAll('.gmnoprint')].tabIndex=[1]
+    [...document.querySelectorAll('.gmnoprint')].tabIndex=[0]
+
+    var menuSidebar = document.querySelectorAll('.hidden .App-sidebar .Sidebar-locations .Sidebar-location')
+    // TODO: handle tabIndex in state?
+    if (menuSidebar) {
+      for (i; i < menuSidebar.length; i++) {
+        menuSidebar[i].tabIndex = "-1";
+      }
+    } else {
+      for (i; i < menuSidebar.length; i++) {
+        menuSidebar[i].tabIndex = "0";
+      }
+    }
   }
 
 // Handles marker click-states
@@ -163,6 +177,8 @@ class App extends Component {
         updateQuery={this.updateQuery}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onKeyPressed={this.onKeyPressed}
+        toggleNavigation={this.toggleNavigation}
+        active={this.state.active}
         />
 
         <MapContainer
