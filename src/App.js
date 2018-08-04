@@ -107,6 +107,7 @@ class App extends Component {
 
     var menuSidebar = document.querySelectorAll('.hidden .App-sidebar .Sidebar-locations .Sidebar-location')
     // TODO: handle tabIndex in state?
+    // TODO: hide Sidebar when onKeyPressed opens infowindow to tab inside?
     if (menuSidebar) {
       for (i; i < menuSidebar.length; i++) {
         menuSidebar[i].tabIndex = "-1";
