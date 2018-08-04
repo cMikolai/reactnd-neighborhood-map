@@ -41,7 +41,7 @@ class App extends Component {
   ifAppIsOffline = () => {
     var appIsOffline = document.querySelector('.App').lastElementChild
     appIsOffline.className += 'App-offline'
-    appIsOffline.innerHTML = 'No internet connection. Please try again later.'
+    appIsOffline.innerHTML = 'The map could not be loaded. Please try again later.'
     //console.log(appIsOffline)
   }
 
