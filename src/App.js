@@ -61,10 +61,15 @@ class App extends Component {
 // Checking if Map is visible
   checkMapsLoadingStatus = () => {
     var map = document.querySelector('.Map-container')
-    var sidebarList = document.querySelector('#menu')
-    if (map) {
+    var sidebarList = document.querySelector('.Sidebar-locations')
+    var gmErrContainer = document.querySelector('.gm-err-container')
+
+    if (map && gmErrContainer) {
+      console.log('failed')
+      sidebarList.style.display = 'none';
+    } else if (map && !gmErrContainer) {
       console.log('success')
-      sidebarList.style.display = 'initial';
+      sidebarList.style.display = 'block';
     } else {
       console.log('failed')
       sidebarList.style.display = 'none';
