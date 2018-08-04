@@ -16,7 +16,7 @@ class Navigation extends Component {
       <div>
         <header className="App-header">
           <nav className="App-navigation navigation">
-            <div id="menuToggle" tabIndex="-1" onKeyDown={(e) => onKeyPressed(e)}>
+            <div id="menuToggle" tabIndex="0" onKeyDown={(e) => onKeyPressed(e)}>
               <input type="checkbox" className="nav-input"/>
               <span></span>
               <span></span>
