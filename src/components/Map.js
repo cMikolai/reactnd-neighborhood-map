@@ -21,7 +21,7 @@ export class MapContainer extends Component {
     const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, animation} = this.props
 
     return (
-      <div className="Map-container">
+      <div className="Map-container" role="application">
         <Map google={this.props.google}
             className={'Map'}
             onClick={onMapClicked}
@@ -63,11 +63,11 @@ export class MapContainer extends Component {
               <div
                 style={{color: '#000'}}>
                 <h1
-                  tabIndex={'4'}>{selectedPlace.name}</h1>
+                  tabIndex={'0'}>{selectedPlace.name}</h1>
                 <p
-                  tabIndex={'5'}>{selectedPlace.address}</p>
+                  tabIndex={'0'}>{selectedPlace.address}</p>
                 <p className="App-src"
-                  tabIndex={'6'}>Informations by
+                  tabIndex={'0'}>Informations by
                   <a href="https://foursquare.com"
                   tabIndex="-1"> Foursquare.com</a></p>
               </div>
