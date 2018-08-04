@@ -34,7 +34,19 @@ class App extends Component {
     .then(res => res.json())
     .then(items => {
         this.setState({ items: items.response.venues });
-      });
+      })
+    .catch(error => this.onGetLocationsError('', error));
+  }
+
+// Adding an info message for user when Foursquare API can't be fetched
+  onGetLocationsError = (e) => {
+    var appContainer = document.querySelector('.App')
+    var errorInfo = document.createElement('div')
+    var errorInfoP = document.createTextNode("Sorry, but the locations can not be loaded.");
+    appContainer.append(errorInfo)
+    errorInfo.appendChild(errorInfoP)
+
+    errorInfo.className += 'error-info'
   }
 
 // Changing the default "Loading..." - message to display a connection error

@@ -274,7 +274,17 @@ li:hover {
   border-radius: 5px;
 }
 
-/* Makes loading/offline message visible to user*/
+/* Error handling */
 .App-offline {
   padding-top: 200px;
+}
+
+.error-info {
+  z-index: 1;
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  margin: 200px 0px;
+  width: 100vw;
+  color: red;
 }
