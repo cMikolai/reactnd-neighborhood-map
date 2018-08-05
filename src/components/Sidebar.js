@@ -17,6 +17,7 @@ class Sidebar extends Component {
           tabIndex={tabIndex}
           className='Sidebar-location'
           id={item.id}
+          role="link"
           onClick={e => this.props.onClick(item.name)}
           key={item.name}
           >
@@ -34,6 +35,7 @@ class Sidebar extends Component {
         <input
           role='searchbox'
           tabIndex='0'
+          aria-labelledby='search locations'
           className='filter-locations'
           type='text'
           placeholder='Filter locations'
