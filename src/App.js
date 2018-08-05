@@ -203,7 +203,7 @@ class App extends Component {
         />
 
         <MapContainer
-        foo={(()=>console.log(this.state.activeMarker))()}
+        //foo={(()=>console.log(this.state.activeMarker))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
