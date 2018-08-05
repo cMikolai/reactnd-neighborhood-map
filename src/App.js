@@ -57,7 +57,7 @@ class App extends Component {
   ifAppIsLoading = () => {
     var appIsOffline = document.querySelector('.App').lastElementChild
     appIsOffline.className += 'App-offline'
-    appIsOffline.innerHTML = 'The map could not be loaded. Please try again later.'
+    appIsOffline.innerHTML = 'App cannot reach Google servers due to firewall.'
   }
 
 // Checking if Map is visible
