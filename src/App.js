@@ -17,6 +17,17 @@ class App extends Component {
       };
   }
 
+  test = () => {
+    var myMarker = this.state.activeMarker
+
+    console.log(myMarker)
+
+    /* myMarker.animating = true
+    myMarker.animation = 1
+    myMarker.setAnimation = 1
+    myMarker.address = 'bla' */
+  }
+
   componentDidMount = () => {
     this.getLocations()
     this.ifAppIsLoading()
@@ -24,11 +35,13 @@ class App extends Component {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
     this.changeErrorMessage()
+    this.test()
   }
 
   componentDidUpdate= () => {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
+    this.test()
   }
 
 // Fetching Foursquare API
@@ -180,12 +193,12 @@ class App extends Component {
 
     // Search (passed down to both Map and Sidebar)
     let filterLocations
-    if (query) {
+    if (query && items) {
       const match = new RegExp(escapeRegExp(query), 'i')
       // filtering the items array
       filterLocations = items.filter((item) => match.test(item.name))
     } else {
-      filterLocations = items
+      filterLocations = items ? items : []
     }
 
     return (
@@ -201,7 +214,7 @@ class App extends Component {
         />
 
         <MapContainer
-        // foo={(()=>console.log(this.state.animation))()}
+        //foo={(()=>console.log(this.state.activeMarker))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
@@ -209,7 +222,6 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
-        changeErrorMessage={this.changeErrorMessage}
         />
 
       </div>

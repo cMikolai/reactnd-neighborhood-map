@@ -10,6 +10,21 @@ class Sidebar extends Component {
   render() {
     const { filterLocations } = this.props
 
+    var sidebarListElements = filterLocations.map((item) => {
+      // uses same function as Map.js to match results
+      return (
+        <li
+          tabIndex={'0'}
+          className='Sidebar-location'
+          id={item.id}
+          onClick={e => this.props.onClick(item.name)}
+          key={item.name}
+          >
+          {item.name}
+        </li>
+      )
+    })
+
     return (
       <div className='App-sidebar'>
 
@@ -29,21 +44,7 @@ class Sidebar extends Component {
 
         <div
           className='Sidebar-locations'>
-        {filterLocations.map((item) => {
-          // uses same function as Map.js to match results
-          return (
-            <li
-              tabIndex={'0'}
-              className='Sidebar-location'
-              id={item.id}
-              onClick={e => this.props.onClick(item.name)}
-              key={item.name}
-              >
-              {item.name}
-            </li>
-          )
-        })
-        }
+        {sidebarListElements.length ? sidebarListElements : <p>No locations available</p>}
       </div>
 
       </div>

@@ -12,13 +12,34 @@ export class MapContainer extends Component {
     onMarkerClick: PropTypes.func.isRequired,
     onMapClicked: PropTypes.func.isRequired,
     selectedPlace: PropTypes.object.isRequired,
-    showingInfoWindow: PropTypes.bool.isRequired,
-    changeErrorMessage: PropTypes.func.isRequired
+    showingInfoWindow: PropTypes.bool.isRequired
   }
 
   render() {
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
 
-    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, changeErrorMessage } = this.props
+    var markers = filterLocations.map((item) => {
+      // filters locations and creates a marker for them
+      return (
+        <Marker
+          title={item.name} // needed for filtering markers
+          //foo={(()=>console.log(location.id))()}
+          key={item.id}
+          id={item.id}
+          onClick={onMarkerClick}
+          name={item.name}
+          icon={{
+            path: this.props.google.maps.SymbolPath.CIRCLE,
+            scale: 8
+          }}
+          animation={0}
+          position={{
+          lat: item.location.lat,
+          lng: item.location.lng }}
+          address={item.location.address}
+         />
+      )
+    })
 
     return (
       <div className="Map-container" role="application">
@@ -33,30 +54,7 @@ export class MapContainer extends Component {
             zoom={16}
             disableDefaultUI={true}>
 
-// TODO: if items array is not empty, filterLocations, else ... whatever
-          {filterLocations.map((item) => {
-            // filters locations and creates a marker for them
-            return (
-              <Marker
-                title={item.name} // needed for filtering markers
-                //foo={(()=>console.log(location.id))()}
-                key={item.id}
-                id={item.id}
-                onClick={onMarkerClick}
-                name={item.name}
-                icon={{
-                  path: this.props.google.maps.SymbolPath.CIRCLE,
-                  scale: 8
-                }}
-                animation={0}
-                position={{
-                lat: item.location.lat,
-                lng: item.location.lng }}
-                address={item.location.address}
-               />
-            )
-          })
-          }
+          {markers.length ? markers : <p>No locations available</p>}
 
           <InfoWindow
             marker={activeMarker}
@@ -64,11 +62,11 @@ export class MapContainer extends Component {
               <div
                 style={{color: '#000'}}>
                 <h1
-                  tabIndex={'0'}>{selectedPlace.name}</h1>
+                  tabIndex={'1'}>{selectedPlace.name}</h1>
                 <p
-                  tabIndex={'0'}>{selectedPlace.address}</p>
+                  tabIndex={'1'}>{selectedPlace.address}</p>
                 <p className="App-src"
-                  tabIndex={'0'}>Informations by
+                  tabIndex={'1'}>Informations by
                   <a href="https://foursquare.com"
                   tabIndex="-1"> Foursquare.com</a></p>
               </div>
