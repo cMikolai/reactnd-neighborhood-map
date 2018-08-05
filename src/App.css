@@ -238,7 +238,8 @@ li:hover {
 /* Error handling */
 .App-offline {
   padding-top: 200px;
-  background-color: #fff;
+  background-color: #000;
+  color: red;
 }
 
 .error-info {
