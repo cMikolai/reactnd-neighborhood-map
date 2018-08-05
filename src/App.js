@@ -23,6 +23,7 @@ class App extends Component {
     this.toggleNavigation()
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
+    this.changeErrorMessage()
   }
 
   componentDidUpdate= () => {
@@ -77,15 +78,19 @@ class App extends Component {
   }
 
 // Google Map is not loading
-// TODO: Where to use this function so it'd render after the whole page is load?
   changeErrorMessage = () => {
-    var gmErrMessage = document.querySelector('.gm-err-message')
+    setTimeout(function(){
+      var gmErrMessageIcon = document.querySelector('.gm-err-icon')
+      var gmErrMessageTitle = document.querySelector('.gm-err-title')
+      var gmErrMessage = document.querySelector('.gm-err-message')
 
-    if (gmErrMessage) {
-      gmErrMessage.innerHTML = 'bah!'
-    } else {
-
-    }
+      if (gmErrMessage) {
+        gmErrMessageTitle.innerHTML = 'Sorry, Google Maps cannot be loaded. Please try again later.'
+        gmErrMessageIcon.style.display = 'none'
+        gmErrMessage.style.display = 'none'
+      } else {
+      }
+    }, 1500);
   }
 
 
