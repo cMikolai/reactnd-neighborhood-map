@@ -14,9 +14,7 @@ class App extends Component {
         selectedPlace: {},
         items: [],
         active: false,
-        tabIndex: -1,
-        //myActiveMarker: [],
-        animation: 0
+        tabIndex: -1
       };
   }
 
@@ -144,10 +142,8 @@ class App extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true,
-      //animation: 1,
+      showingInfoWindow: true
     });
-    this.state.activeMarker.setAnimation = 1
   }
 
 // Handles Map click-states
@@ -155,8 +151,7 @@ class App extends Component {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
-        //animation: 0
+        activeMarker: null
       })
     }
   };
@@ -175,12 +170,7 @@ class App extends Component {
     let clickedMarker = [...document.querySelectorAll('.gmnoprint')]
 
     if (document.querySelector('.Map-container')) {
-      clickedMarker.find(m => m.title === e).click(
-        console.log('I am a fancy marker'),
-        /*this.setState({ myActiveMarker: clickedMarker[0]}),
-        clickedMarker[0].style.transform = "scale(5)"*/
-        //this.state.myActiveMarker.style.display = "none"
-      )
+      clickedMarker.find(m => m.title === e).click()
     } else {
       this.onGetLocationsError()
     }
@@ -221,7 +211,6 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
-        animation = {this.state.animation}
         />
 
       </div>
