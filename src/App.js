@@ -14,20 +14,10 @@ class App extends Component {
         selectedPlace: {},
         items: [],
         active: false,
-        tabIndex: -1
+        tabIndex: -1,
+        myActiveMarker: []
       };
   }
-
-  //test = () => {
-    //var myMarker = this.state.activeMarker
-
-    //console.log(myMarker)
-
-    /* myMarker.animating = true
-    myMarker.animation = 1
-    myMarker.setAnimation = 1
-    myMarker.address = 'bla' */
-  //}
 
   componentDidMount = () => {
     this.getLocations()
@@ -36,13 +26,11 @@ class App extends Component {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
     this.changeErrorMessage()
-    //this.test()
   }
 
   componentDidUpdate= () => {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
-    //this.test()
   }
 
 // Fetching Foursquare API
@@ -179,9 +167,14 @@ class App extends Component {
 
 // Having clicks on sidebar-links showing their markers info-windows
   onSidebarLinkClick = (e) => {
+    let clickedMarker = [...document.querySelectorAll('.gmnoprint')]
+
     if (document.querySelector('.Map-container')) {
-      [...document.querySelectorAll('.gmnoprint')].find(m => m.title === e).click(
-        console.log('I am a fancy marker')
+      clickedMarker.find(m => m.title === e).click(
+        //console.log('I am a fancy marker'),
+        this.setState({ myActiveMarker: clickedMarker[0]}),
+        clickedMarker[0].style.transform = "scale(5)"
+        //this.state.myActiveMarker.style.display = "none"
       )
     } else {
       this.onGetLocationsError()
@@ -215,7 +208,7 @@ class App extends Component {
         />
 
         <MapContainer
-        //foo={(()=>console.log(this.state.activeMarker))()}
+        foo={(()=>console.log(this.state.myActiveMarker))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
