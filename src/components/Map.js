@@ -16,7 +16,7 @@ export class MapContainer extends Component {
   }
 
   render() {
-    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, animation } = this.props
 
     var markers = filterLocations.map((item) => {
       // filters locations and creates a marker for them
@@ -32,6 +32,7 @@ export class MapContainer extends Component {
             path: this.props.google.maps.SymbolPath.CIRCLE,
             scale: 8
           }}
+          animation={animation}
           position={{
           lat: item.location.lat,
           lng: item.location.lng }}

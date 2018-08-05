@@ -15,7 +15,8 @@ class App extends Component {
         items: [],
         active: false,
         tabIndex: -1,
-        myActiveMarker: []
+        //myActiveMarker: [],
+        animation: 0
       };
   }
 
@@ -139,19 +140,23 @@ class App extends Component {
   }
 
 // Handles marker click-states
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      //animation: 1,
     });
+    this.state.activeMarker.setAnimation = 1
+  }
 
 // Handles Map click-states
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
+        //animation: 0
       })
     }
   };
@@ -171,9 +176,9 @@ class App extends Component {
 
     if (document.querySelector('.Map-container')) {
       clickedMarker.find(m => m.title === e).click(
-        //console.log('I am a fancy marker'),
-        this.setState({ myActiveMarker: clickedMarker[0]}),
-        clickedMarker[0].style.transform = "scale(5)"
+        console.log('I am a fancy marker'),
+        /*this.setState({ myActiveMarker: clickedMarker[0]}),
+        clickedMarker[0].style.transform = "scale(5)"*/
         //this.state.myActiveMarker.style.display = "none"
       )
     } else {
@@ -208,7 +213,7 @@ class App extends Component {
         />
 
         <MapContainer
-        foo={(()=>console.log(this.state.myActiveMarker))()}
+        foo={(()=>console.log(this.state.activeMarker))()}
         filterLocations={filterLocations}
         onSidebarLinkClick={this.onSidebarLinkClick}
         onMarkerClick={this.onMarkerClick}
@@ -216,6 +221,7 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
+        animation = {this.state.animation}
         />
 
       </div>
