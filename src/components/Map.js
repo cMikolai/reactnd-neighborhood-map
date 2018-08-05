@@ -12,12 +12,13 @@ export class MapContainer extends Component {
     onMarkerClick: PropTypes.func.isRequired,
     onMapClicked: PropTypes.func.isRequired,
     selectedPlace: PropTypes.object.isRequired,
-    showingInfoWindow: PropTypes.bool.isRequired
+    showingInfoWindow: PropTypes.bool.isRequired,
+    changeErrorMessage: PropTypes.func.isRequired
   }
 
   render() {
 
-    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow } = this.props
+    const { filterLocations, onMarkerClick, onMapClicked, selectedPlace, activeMarker, showingInfoWindow, changeErrorMessage } = this.props
 
     return (
       <div className="Map-container" role="application">
@@ -32,6 +33,7 @@ export class MapContainer extends Component {
             zoom={16}
             disableDefaultUI={true}>
 
+// TODO: if items array is not empty, filterLocations, else ... whatever
           {filterLocations.map((item) => {
             // filters locations and creates a marker for them
             return (

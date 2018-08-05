@@ -76,6 +76,19 @@ class App extends Component {
     }
   }
 
+// Google Map is not loading
+// TODO: Where to use this function so it'd render after the whole page is load?
+  changeErrorMessage = () => {
+    var gmErrMessage = document.querySelector('.gm-err-message')
+
+    if (gmErrMessage) {
+      gmErrMessage.innerHTML = 'bah!'
+    } else {
+
+    }
+  }
+
+
 // toggles Navigation
   toggleNavigation = () => {
     const currentState = this.state.active;
@@ -191,6 +204,7 @@ class App extends Component {
         selectedPlace={this.state.selectedPlace}
         showingInfoWindow={this.state.showingInfoWindow}
         activeMarker={this.state.activeMarker}
+        changeErrorMessage={this.changeErrorMessage}
         />
 
       </div>
