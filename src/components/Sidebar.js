@@ -8,13 +8,13 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { filterLocations } = this.props
+    const { filterLocations, tabIndex } = this.props
 
     var sidebarListElements = filterLocations.map((item) => {
       // uses same function as Map.js to match results
       return (
         <li
-          tabIndex={'0'}
+          tabIndex={tabIndex}
           className='Sidebar-location'
           id={item.id}
           onClick={e => this.props.onClick(item.name)}

@@ -39,6 +39,7 @@ class Navigation extends Component {
                 filterLocations={filterLocations}
                 onChange={this.props.updateQuery}
                 onClick={this.props.onSidebarLinkClick}
+                tabIndex={this.props.tabIndex}
               />
               </ul>
 

@@ -13,20 +13,21 @@ class App extends Component {
         activeMarker: {},
         selectedPlace: {},
         items: [],
-        active: false
+        active: false,
+        tabIndex: -1
       };
   }
 
-  test = () => {
-    var myMarker = this.state.activeMarker
+  //test = () => {
+    //var myMarker = this.state.activeMarker
 
-    console.log(myMarker)
+    //console.log(myMarker)
 
     /* myMarker.animating = true
     myMarker.animation = 1
     myMarker.setAnimation = 1
     myMarker.address = 'bla' */
-  }
+  //}
 
   componentDidMount = () => {
     this.getLocations()
@@ -35,13 +36,13 @@ class App extends Component {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
     this.changeErrorMessage()
-    this.test()
+    //this.test()
   }
 
   componentDidUpdate= () => {
     this.handleTabIndex()
     this.checkMapsLoadingStatus()
-    this.test()
+    //this.test()
   }
 
 // Fetching Foursquare API
@@ -107,16 +108,28 @@ class App extends Component {
   }
 
 
-// toggles Navigation
+// toggles Navigation && handles tabIndex in Sidebar
   toggleNavigation = () => {
+    // toggles navigation
     const currentState = this.state.active;
 
     this.setState({
       active: !currentState
     })
 
-    //console.log("I was clicked!")
-    //console.log(this.state.active)
+    // handles tabIndex in Sidebar
+    var menuSidebarVisible = document.querySelector('.hidden')
+    var menuSidebarHidden = document.querySelector('.visible')
+
+    if (menuSidebarVisible) {
+      this.setState({
+        tabIndex: 0
+      })
+    } else if (menuSidebarHidden) {
+      this.setState({
+        tabIndex: -1
+      })
+    }
   }
 
 // adds enter event to tabbing
@@ -135,19 +148,6 @@ class App extends Component {
     }
 
     [...document.querySelectorAll('.gmnoprint')].tabIndex=[0]
-
-    var menuSidebar = document.querySelectorAll('.hidden .App-sidebar .Sidebar-locations .Sidebar-location')
-    // TODO: handle tabIndex in state?
-    // TODO: hide Sidebar when onKeyPressed opens infowindow to tab inside?
-    if (menuSidebar) {
-      for (i; i < menuSidebar.length; i++) {
-        menuSidebar[i].tabIndex = "-1";
-      }
-    } else {
-      for (i; i < menuSidebar.length; i++) {
-        menuSidebar[i].tabIndex = "0";
-      }
-    }
   }
 
 // Handles marker click-states
@@ -211,6 +211,7 @@ class App extends Component {
         onKeyPressed={this.onKeyPressed}
         toggleNavigation={this.toggleNavigation}
         active={this.state.active}
+        tabIndex={this.state.tabIndex}
         />
 
         <MapContainer

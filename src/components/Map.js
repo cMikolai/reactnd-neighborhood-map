@@ -32,7 +32,6 @@ export class MapContainer extends Component {
             path: this.props.google.maps.SymbolPath.CIRCLE,
             scale: 8
           }}
-          animation={0}
           position={{
           lat: item.location.lat,
           lng: item.location.lng }}
@@ -62,13 +61,13 @@ export class MapContainer extends Component {
               <div
                 style={{color: '#000'}}>
                 <h1
-                  tabIndex={'1'}>{selectedPlace.name}</h1>
+                  tabIndex={'0'}>{selectedPlace.name}</h1>
                 <p
-                  tabIndex={'1'}>{selectedPlace.address}</p>
+                  tabIndex={'0'}>{selectedPlace.address}</p>
                 <p className="App-src"
-                  tabIndex={'1'}>Informations by
+                  tabIndex={'0'}>Informations by
                   <a href="https://foursquare.com"
-                  tabIndex="-1"> Foursquare.com</a></p>
+                  tabIndex={"-1"}> Foursquare.com</a></p>
               </div>
           </InfoWindow>
 
