@@ -35,7 +35,6 @@ class Sidebar extends Component {
         <input
           role='searchbox'
           tabIndex='0'
-          aria-labelledby='search locations'
           className='filter-locations'
           type='text'
           placeholder='Filter locations'
