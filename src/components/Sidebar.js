@@ -31,7 +31,7 @@ class Sidebar extends Component {
 
         <h1 className='App-title'>My Neighborhood</h1>
         <br />
-        <div className='filter'>
+        <div className='filter' id="filter-input">
         <input
           role='searchbox'
           tabIndex='0'
