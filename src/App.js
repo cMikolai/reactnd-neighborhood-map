@@ -167,7 +167,7 @@ class App extends Component {
 
 // Having clicks on sidebar-links showing their markers info-windows
   onSidebarLinkClick = (e) => {
-    let clickedMarker = [...document.querySelectorAll('.gmnoprint')]
+    let clickedMarker = [...document.querySelectorAll('area')]
 
     if (document.querySelector('.Map-container')) {
       clickedMarker.find(m => m.title === e).click()

@@ -41,10 +41,10 @@ export class MapContainer extends Component {
                   id={item.id}
                   onClick={onMarkerClick}
                   name={item.name}
-                  icon={{
-                    path: this.props.google.maps.SymbolPath.CIRCLE,
-                    scale: 8
-                  }}
+                  //icon={{
+                  //  path: this.props.google.maps.SymbolPath.CIRCLE,
+                  //  scale: 8
+                  //}}
                   animation={activeMarker ?
                     (item.name === activeMarker.title ? '1' : '0') : '0'}
                   position={{
