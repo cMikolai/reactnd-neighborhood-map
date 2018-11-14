@@ -15,6 +15,12 @@ To use this repository on your local machine:
 * and start the local server with `npm start`
 * on `localhost:3000`.
 
+To display the map properly please add your own API key to the /src/components/Map.js file
+```
+export default GoogleApiWrapper({
+  apiKey: "<INSERT-API-HERE>"
+}) (MapContainer)
+```
 
 To get the site to use service workers please use
 * `npm run build`
