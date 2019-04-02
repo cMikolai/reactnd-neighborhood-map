@@ -53,7 +53,7 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.PropTypes = {
+Sidebar.propTypes = {
   locations: PropTypes.array.isRequired
 }
 
