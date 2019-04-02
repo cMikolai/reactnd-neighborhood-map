@@ -54,7 +54,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  locations: PropTypes.array.isRequired
+  filterLocations: PropTypes.array.isRequired
 }
 
 export default Sidebar;
